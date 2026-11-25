@@ -1,6 +1,6 @@
 from linkedList import *
 from menu import *
-from queue import *
+from queue1 import *
 from stat import *
 from tasks import *
 
@@ -13,6 +13,7 @@ from tasks import *
     # 7. Undo
     # 8. Task history
     # 9. Show queue
+
 
 def getInt(text):
     while True:
@@ -31,15 +32,13 @@ def main():
         if choice == 1:
 
             name = input("Enter task name: ")
-
             addTask(name)
-            
+
             input("\nPress ENTER to continue...")
 
         elif choice == 2:
-            
-            getTaskID = getInt("Enter task ID: ")
 
+            getTaskID = getInt("Enter task ID: ")
             taskID = getTaskID
             name = input("Enter new task name: ")
 
@@ -50,12 +49,31 @@ def main():
         elif choice == 3:
 
             getTaskID = getInt("Enter task ID: ")
-
             taskID = getTaskID
 
             removeTask(taskID)
 
             input("\nPress ENTER to continue...")
+
+        elif choice == 4:           
+            showTasks()
+
+        elif choice == 5:
+
+            taskID = getInt("Enter task ID: ")
+
+            task = findTask(taskID)
+
+            if task:
+                enqueue(task)
+            else:
+                print("Task not found!")
+
+            input("\nPress ENTER to continue...")
+
+            
+
+
 
 
 

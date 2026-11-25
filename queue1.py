@@ -1,7 +1,15 @@
+from tasks import findTask
+
 queue = []
 
 
-def enqueue(task):
+def enqueue(taskID):
+    task = findTask(taskID)
+
+    if not task:
+        print("Task not found!")
+        return
+
     for x in queue:
         if x["id"] == task["id"]:
             print("Task is already in the queue!")
