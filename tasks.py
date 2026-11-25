@@ -15,6 +15,7 @@ def addTask(name):
     nextID += 1
 
     print("Task added successfully!")
+    print(f"Task ID: {task['id']}")
 
 
 def showTasks():

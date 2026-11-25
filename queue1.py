@@ -24,9 +24,9 @@ def deQueue():
         print("Queue is empty!")
         return None
 
-    deQueue = queue.pop(0)
-    print(deQueue, "removed in queue")
-    return deQueue
+    task = queue.pop(0)
+    print(f"{task['name']} removed from queue.")
+    return task
 
 
 def showQueue():

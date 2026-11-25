@@ -3,16 +3,7 @@ from menu import *
 from queue1 import *
 from stat import *
 from tasks import *
-
-    # 1. Add task
-    # 2. Update task
-    # 3. Remove task
-    # 4. Show all tasks
-    # 5. Add task to queue
-    # 6. Complete next task
-    # 7. Undo
-    # 8. Task history
-    # 9. Show queue
+from stack import *
 
 
 def getInt(text):
@@ -33,6 +24,7 @@ def main():
 
             name = input("Enter task name: ")
             addTask(name)
+            push(tasks[-1])
 
             input("\nPress ENTER to continue...")
 
@@ -57,21 +49,50 @@ def main():
 
         elif choice == 4:           
             showTasks()
+            input("\nPress ENTER to continue...")
 
         elif choice == 5:
 
-            taskID = getInt("Enter task ID: ")
+            getTaskID = getInt("Enter task ID: ")
+            taskID = getTaskID
 
-            task = findTask(taskID)
-
-            if task:
-                enqueue(task)
-            else:
-                print("Task not found!")
+            enqueue(taskID)
 
             input("\nPress ENTER to continue...")
 
-            
+        elif choice == 6:
+
+            task = deQueue()
+
+            if task:
+                task['status'] = 'Completed'
+                addToHistory(task)
+                print(f"Task completed: {task['name']}")
+
+            input("\nPress ENTER to continue...")
+
+        elif choice == 7:
+            undo(tasks)
+            input("\nPress ENTER to continue...")
+
+        elif choice == 8:
+            showHistory()
+            input("\nPress ENTER to continue...")
+
+        elif choice == 9:
+            showQueue()
+            input("\nPress ENTER to continue...")
+
+        elif choice == 0:
+            print('Closing..')
+            break
+
+        else:
+            print('Something went wrong...')
+            input("\nPress ENTER to continue...")
+            continue
+
+main()
 
 
 
