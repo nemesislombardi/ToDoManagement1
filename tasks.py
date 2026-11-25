@@ -51,6 +51,6 @@ def removeTask(taskID):
 
     if task:
         tasks.remove(task)
-        print("Task removed successfully!")
+        print(f"{task["name"]} Named task removed successfully!")
     else:
         print("Task not found!")
